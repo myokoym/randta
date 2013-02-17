@@ -1,0 +1,47 @@
+-# encoding: utf-8
+!!! XML
+!!!
+%html
+  %head
+    %meta{'http-equiv' => 'content-type', :content => 'text/html; charset=utf-8'}
+    %meta{'http-equiv' => 'content-style-type', :content => 'text/css'}
+    %meta{'http-equiv' => 'content-script-type', :content => 'text/javascript'}
+    %title Randta - ランダム文字列テーブル生成器
+  %body
+    %h1 Randtable
+
+    Powered by
+    %a{:href => "http://www.ruby-lang.org/ja/"} Ruby
+    ,
+    %a{:href => "http://www.sinatrarb.com/intro-jp.html"} Sinatra
+    ,
+    %a{:href => "http://haml-lang.com/"} Haml
+
+    %form{:action => url("/create", false, true), :method => "post"}
+      %p
+        volume
+        %select{:name => "volume"}
+          - 1.upto(100) do |i|
+            %option{:value => i}= i
+        ='　'
+        digit
+        %select{:name => "digit"}
+          - 1.upto(10).each do |i|
+            %option{:value => i}= i
+      %p
+        %input{:type => "submit"}
+    %p
+      %table
+        - @list.each_slice(5) do |cols|
+          %tr
+            - cols.each do |r|
+              %td= r
+    %p
+      HTTP GET URL
+      %br
+      %input{:type => "text", :size => 50, :value => @http_get_url}
+
+    %a{:href => "https://github.com/myokoym/randta"}
+      %img{:style => "position: absolute; top: 0; right: 0; border: 0;",
+           :src => "https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png",
+           :alt => "Fork me on GitHub"}
