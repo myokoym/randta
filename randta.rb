@@ -10,12 +10,14 @@ end
 
 post "/create" do
   @list = create(params)
+  @width = params[:width].to_i
   @http_get_url = http_get_url
   haml :index
 end
 
 get "/create" do
   @list = create(params)
+  @width = params[:width].to_i
   @http_get_url = http_get_url
   haml :index
 end

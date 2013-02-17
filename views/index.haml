@@ -28,12 +28,17 @@
         %select{:name => "digit"}
           - 1.upto(10).each do |i|
             %option{:value => i}= i
+        ='　'
+        table width
+        %select{:name => "width"}
+          - 1.upto(10).each do |i|
+            %option{:value => i}= i
       %p
         %input{:type => "submit"}
     %p
       %table
         - if @list
-          - @list.each_slice(5) do |cols|
+          - @list.each_slice(@width ||= 5) do |cols|
             %tr
               - cols.each do |r|
                 %td= r

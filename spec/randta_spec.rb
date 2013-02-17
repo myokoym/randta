@@ -18,11 +18,20 @@ describe "Randta" do
   end
 
   context "create (HTTP POST)" do
-    it "volume: 3, digit: 4" do
+    it "volume: 3, digit: 4, width: 5" do
       post '/create', {:volume => "3",
-                       :digit => "4"}
+                       :digit  => "4",
+                       :width  => "5"}
       last_response.ok? == true
-      last_response.body.to_s.should =~ /<tr>\s+?(?:<td>\d{,4}<\/td>\s+?){3}\s+?<\/tr>/
+      last_response.body.to_s.should =~ /<tr>\s+?(<td>\d{,4}<\/td>\s+?){3}\s+?<\/tr>/
+    end
+
+    it "volume: 4, digit: 1, width: 2" do
+      post '/create', {:volume => "4",
+                       :digit  => "1",
+                       :width  => "2"}
+      last_response.ok? == true
+      last_response.body.to_s.should =~ /(<tr>\s+?(<td>\d{1}<\/td>\s+?){2}\s+?<\/tr>\s+?){2}/
     end
   end
 
