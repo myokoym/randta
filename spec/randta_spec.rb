@@ -17,16 +17,16 @@ describe "Randta" do
     end
   end
 
-=begin
   context "create (HTTP POST)" do
-    it "text to 3 volume" do
-      post '/create', {:text => "text",
-                      :volume => "3",
-                      :linefeed => "0"}
+    it "volume: 3, digit: 4" do
+      post '/create', {:volume => "3",
+                       :digit => "4"}
       last_response.ok? == true
-      last_response.body.to_s.should =~ />texttexttext<\/textarea>/
+      last_response.body.to_s.should =~ /<tr>\s+?(?:<td>\d{,4}<\/td>\s+?){3}\s+?<\/tr>/
     end
+  end
 
+=begin
     it "add linefeed" do
       post '/create', {:text => "text",
                       :volume => "3",
