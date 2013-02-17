@@ -34,6 +34,10 @@
           - 1.upto(10).each do |i|
             %option{:value => i}= i
       %p
+        %input{:type => "radio", :name => "mode", :value => "n", :checked => "checked"} numeric
+      %p
+        %input{:type => "radio", :name => "mode", :value => "s"} string
+      %p
         %input{:type => "submit"}
     %p
       %table
