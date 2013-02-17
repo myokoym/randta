@@ -32,10 +32,11 @@
         %input{:type => "submit"}
     %p
       %table
-        - @list.each_slice(5) do |cols|
-          %tr
-            - cols.each do |r|
-              %td= r
+        - if @list
+          - @list.each_slice(5) do |cols|
+            %tr
+              - cols.each do |r|
+                %td= r
     %p
       HTTP GET URL
       %br
