@@ -8,13 +8,14 @@ get "/" do
   haml :index
 end
 
-get "/create" do
+create = lambda do
   @list = create(params)
   @width = params[:width].to_i
   @http_get_url = http_get_url
   haml :index
 end
-alias :post :get
+get "/create", &create
+post "/create", &create
 
 private
 def create(params)
