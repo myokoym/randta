@@ -22,21 +22,36 @@
         volume
         %select{:name => "volume"}
           - 1.upto(100) do |i|
-            %option{:value => i}= i
+            - if i == @volume
+              %option{:value => i, :selected => "selected"}= i
+            - else
+              %option{:value => i}= i
         ='　'
         digit
         %select{:name => "digit"}
           - 1.upto(10).each do |i|
-            %option{:value => i}= i
+            - if i == @digit
+              %option{:value => i, :selected => "selected"}= i
+            - else
+              %option{:value => i}= i
         ='　'
         table width
         %select{:name => "width"}
           - 1.upto(10).each do |i|
-            %option{:value => i}= i
-      %p
-        %input{:type => "radio", :name => "mode", :value => "n", :checked => "checked"} numeric
-      %p
-        %input{:type => "radio", :name => "mode", :value => "s"} string
+            - if i == @width
+              %option{:value => i, :selected => "selected"}= i
+            - else
+              %option{:value => i}= i
+      - if @mode == nil || @mode =~ /n/
+        %p
+          %input{:type => "radio", :name => "mode", :value => "n", :checked => "checked"} numeric
+        %p
+          %input{:type => "radio", :name => "mode", :value => "s"} string
+      - else
+        %p
+          %input{:type => "radio", :name => "mode", :value => "n"} numeric
+        %p
+          %input{:type => "radio", :name => "mode", :value => "s", :checked => "checked"} string
       %p
         %input{:type => "submit"}
     %p

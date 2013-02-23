@@ -10,7 +10,10 @@ end
 
 create = lambda do
   @list = create(params)
+  @volume = params[:volume].to_i
+  @digit = params[:digit].to_i
   @width = params[:width].to_i
+  @mode = params[:mode]
   @http_get_url = http_get_url
   haml :index
 end

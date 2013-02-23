@@ -44,6 +44,17 @@ describe "Randta" do
       last_response.ok? == true
       last_response.body.to_s.should =~ /<tr>\s+?(<td>[0-9a-z]{4}<\/td>\s+?){100}<\/tr>/
     end
+
+    it "save params" do
+      post '/create', {:volume => "3",
+                       :digit  => "4",
+                       :width  => "5",
+                       :mode  => "s"}
+      last_response.ok? == true
+      last_response.body.to_s.should =~ /selected.*>3</
+      last_response.body.to_s.should =~ /selected.*>4</
+      last_response.body.to_s.should =~ /selected.*>5</
+    end
   end
 
   context "create (HTTP GET)" do
