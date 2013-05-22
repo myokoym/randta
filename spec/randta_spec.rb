@@ -54,6 +54,7 @@ describe "Randta" do
       last_response.body.to_s.should =~ /selected.*>3</
       last_response.body.to_s.should =~ /selected.*>4</
       last_response.body.to_s.should =~ /selected.*>5</
+      last_response.body.to_s.should =~ /checked.*>string</
     end
   end
 
